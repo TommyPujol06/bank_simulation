@@ -1,0 +1,11 @@
+[package]
+name = "bank"
+version = "0.1.0"
+authors = ["Tommy Pujol <tommy@pujol.cf>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+uuid = { version = "0.8", features = ["serde", "v4"] }
+easyrand = "0.2"
