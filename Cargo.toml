@@ -9,3 +9,8 @@ edition = "2018"
 [dependencies]
 uuid = { version = "0.8", features = ["serde", "v4"] }
 easyrand = "0.2"
+
+[profile.release]
+opt-level = 3
+panic = "abort"
+
