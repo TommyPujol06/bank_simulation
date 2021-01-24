@@ -12,7 +12,7 @@ const SIMULATION_SIZE: usize = 10000000;
 
 //
 // ATM: Average wait time 5mins
-// Yearly mantainance cost: 1M €
+// Yearly mantainance cost: 10M €
 // 6k ATM transactions throughout the whole country per hour.
 // With an average of 100€ withdrawals and a 1.8€ fee per withdrawal the gross yearly profit is ~39M€
 // The ATM offer (how many ATM's are available) is 15k
