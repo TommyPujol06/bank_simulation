@@ -5,7 +5,7 @@ pub struct ATM {
 }
 
 impl ATM {
-    fn new(awt: f64, cost: f64, hourly_demand: u64, profit: f64, offer: u64) -> ATM {
+    pub fn new(awt: u32, cost: u32, hourly_demand: u32, profit: i32, offer: u32) -> ATM {
         ATM {
             base: Service::new(awt, cost, hourly_demand, profit, offer),
         }

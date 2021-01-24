@@ -1,13 +1,15 @@
+use crate::client::Client;
+
 pub struct Service {
-    pub awt: f64, // Average wait time in seconds
-    pub cost: f64,
-    pub hourly_demand: u64,
-    pub profit: f64,
-    pub offer: u64,
+    pub awt: u32, // Average wait time in seconds
+    pub cost: u32,
+    pub hourly_demand: u32,
+    pub profit: i32,
+    pub offer: u32,
 }
 
 impl Service {
-    pub fn new(awt: f64, cost: f64, hourly_demand: u64, profit: f64, offer: u64) -> Service {
+    pub fn new(awt: u32, cost: u32, hourly_demand: u32, profit: i32, offer: u32) -> Service {
         Service {
             awt,
             cost,
@@ -15,5 +17,10 @@ impl Service {
             profit,
             offer,
         }
+    }
+
+    pub fn start<T>(&self, client: &Client<T>) -> &Service {
+        let _client = client;
+        self
     }
 }
