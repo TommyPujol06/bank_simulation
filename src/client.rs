@@ -1,23 +1,21 @@
+use crate::services::base::Service;
 use std::{fmt, time::Instant};
 
-pub struct Client<T> {
+pub struct Client {
     pub uid: String,
     pub priority: u8,
     pub start_time: Option<Instant>,
-    pub service: T,
+    pub service: Service,
 }
 
-impl<T> Client<T> {
-    pub fn start<C>(&mut self) {
+impl Client {
+    pub fn work(&mut self) {
         self.start_time = Some(Instant::now());
-    }
-
-    pub fn work<C>(&mut self) {
-        self.service.start(&self);
+        self.service.start();
     }
 }
 
-impl<T> fmt::Display for Client<T> {
+impl fmt::Display for Client {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> fmt::Result {
         let time = self.start_time.unwrap_or(Instant::now());
         write!(
