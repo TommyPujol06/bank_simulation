@@ -8,6 +8,7 @@ pub struct Service {
     pub profit: i32,
     pub offer: u32,
     pub sid: Services,
+    usage: u32,
 }
 
 impl Service {
@@ -26,10 +27,18 @@ impl Service {
             profit,
             offer,
             sid,
+            usage: 0,
         }
     }
 
     pub fn start(&mut self) -> &Service {
+        self.usage += 1;
+        // loop {
+        // if self.usage >= self.offer {
+        //        wait();
+        // }
+        // spawn_cuda_thread(self.as_ref());
+        // }
         self
     }
 }

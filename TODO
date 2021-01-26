@@ -1,0 +1,6 @@
+# Bank simulator 
+
+### TODO
+
+* Randomly choose a service based on the probability of it being picked
+* Implement CUDA port to have 1 Agent (Client) per thread

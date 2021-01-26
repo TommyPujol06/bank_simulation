@@ -9,8 +9,8 @@ edition = "2018"
 [dependencies]
 uuid = { version = "0.8", features = ["serde", "v4"] }
 easyrand = "0.2"
+cuda-runtime-sys = "0.3.0-alpha.1"
 
 [profile.release]
 opt-level = 3
 panic = "abort"
-

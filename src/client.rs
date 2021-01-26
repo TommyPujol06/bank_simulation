@@ -20,9 +20,10 @@ impl fmt::Display for Client {
         let time = self.start_time.unwrap_or(Instant::now());
         write!(
             f,
-            "{} [{}] (Elapsed: {:?})",
+            "{} [{}] [{:?}] (Elapsed: {:?})",
             self.uid,
             self.priority,
+            self.service.sid,
             time.elapsed()
         )
     }
