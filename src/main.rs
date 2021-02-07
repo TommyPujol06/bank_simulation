@@ -1,3 +1,5 @@
+pub extern crate cuda_runtime_sys;
+
 mod client;
 mod services;
 mod walker_alias;
@@ -59,10 +61,9 @@ fn main() {
         });
     }
 
-    v.sort_by_key(|c| c.priority);
-
     for i in 0..SIMULATION_SIZE {
-        v[i].work();
+        let mut service = v[i].service;
+        service.work(&mut v[i]);
     }
 
     for i in 0..SIMULATION_SIZE {

@@ -11,11 +11,6 @@ pub struct Client {
 }
 
 impl Client {
-    pub fn work(&mut self) {
-        self.start_time = Some(Instant::now());
-        self.service.start();
-    }
-
     pub fn random_priority(ptable: &AliasTable) -> u8 {
         let rng = thread_rng();
         ptable.random(rng) as u8

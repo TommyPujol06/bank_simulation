@@ -1,4 +1,5 @@
 use super::services::Services;
+use crate::client::Client;
 
 #[derive(Copy, Clone)]
 pub struct Service {
@@ -9,6 +10,7 @@ pub struct Service {
     pub offer: u32,
     pub sid: Services,
     usage: u32,
+    //    queue: &[u32],
 }
 
 impl Service {
@@ -28,17 +30,25 @@ impl Service {
             offer,
             sid,
             usage: 0,
+            // queue: &[0];
         }
     }
 
-    pub fn start(&mut self) -> &Service {
+    pub fn work(&mut self, _client: &Client) -> &Service {
         self.usage += 1;
-        // loop {
-        // if self.usage >= self.offer {
-        //        wait();
-        // }
-        // spawn_cuda_thread(self.as_ref());
-        // }
+        let mut first_go: bool = true;
+
+        while self.usage == self.offer {
+            if first_go {
+                // self.queue.append(client);
+                // self.queue.sort_by_key(|c| c.priority);
+                first_go = false;
+            }
+        }
+
+        // before cuda init
+        // client.start_time = Some(Instant::now());
+
         self
     }
 }
