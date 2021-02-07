@@ -36,7 +36,7 @@ impl Service {
 
     pub fn work(&mut self, _client: &Client) -> &Service {
         self.usage += 1;
-        let mut first_go: bool = true;
+        let mut first_go = true;
 
         while self.usage == self.offer {
             if first_go {

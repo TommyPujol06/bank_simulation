@@ -10,10 +10,12 @@ edition = "2018"
 
 [dependencies]
 uuid = { version = "0.8", features = ["serde", "v4"] }
-cuda-runtime-sys = "0.3.0-alpha.1"
 strum = "0.20"
 strum_macros = "0.20"
 rand = { version =  "0.8.3", features = ["std", "std_rng"] }
+rustacuda = "0.1"
+rustacuda_core = "0.1"
+rustacuda_derive = "0.1"
 
 [profile.release]
 opt-level = 3
@@ -22,4 +24,3 @@ lto = true
 panic = "abort"
 debug = false
 strip = "symbols"
-
