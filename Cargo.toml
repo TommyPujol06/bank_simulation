@@ -1,7 +1,9 @@
+cargo-features = ["strip"]
+
 [package]
 name = "bank"
 version = "0.1.0"
-authors = ["Tommy Pujol <tommy@pujol.cf>"]
+authors = ["Tommy Pujol <jpujolmonoz5@gmail.com"]
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -15,4 +17,9 @@ rand = { version =  "0.8.3", features = ["std", "std_rng"] }
 
 [profile.release]
 opt-level = 3
+codegen-units = 1
+lto = true
 panic = "abort"
+debug = false
+strip = "symbols"
+
