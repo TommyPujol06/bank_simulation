@@ -1,7 +1,3 @@
-extern crate rustacuda;
-extern crate rustacuda_core;
-extern crate rustacuda_derive;
-
 mod client;
 mod services;
 mod walker_alias;

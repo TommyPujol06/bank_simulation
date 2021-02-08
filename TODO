@@ -1,6 +1,0 @@
-# Bank simulator 
-
-### TODO
-
-* Implement a parallel client service with CUDA to have 1 Agent (Client) per thread.
-
