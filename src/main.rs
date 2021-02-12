@@ -49,19 +49,20 @@ fn main() {
     let stable = unsafe { AliasTable::new(&sweights.assume_init()) };
     let ctable = unsafe { AliasTable::new(&cweights.assume_init()) };
 
-    let mut v: Vec<_> = vec![];
+    let mut v: Vec<Client> = vec![];
     for _ in 0..SIMULATION_SIZE {
         v.push(Client {
             uid: Uuid::new_v4().to_string(),
             priority: Client::random_priority(&ctable),
             start_time: None,
+            elapsed_time: None,
             service: Services::random(&stable, &services),
         });
     }
-
+    let mut queue: Vec<&mut Client> = vec![];
     for i in 0..SIMULATION_SIZE {
         let mut service = v[i].service;
-        service.work(&mut v[i]);
+        service.work(&mut v[i], &mut queue);
     }
 
     for i in 0..SIMULATION_SIZE {

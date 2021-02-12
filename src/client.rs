@@ -1,12 +1,13 @@
 use crate::services::base::Service;
 use crate::walker_alias::AliasTable;
 use rand::thread_rng;
-use std::{fmt, time::Instant};
+use std::{fmt, time::Duration, time::Instant};
 
 pub struct Client {
     pub uid: String,
     pub priority: u8,
     pub start_time: Option<Instant>,
+    pub elapsed_time: Option<Duration>,
     pub service: Service,
 }
 
@@ -19,14 +20,10 @@ impl Client {
 
 impl fmt::Display for Client {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> fmt::Result {
-        let time = self.start_time.unwrap_or(Instant::now());
         write!(
             f,
             "{} [{}] [{:?}] (Elapsed: {:?})",
-            self.uid,
-            self.priority,
-            self.service.sid,
-            time.elapsed()
+            self.uid, self.priority, self.service.sid, self.elapsed_time
         )
     }
 }

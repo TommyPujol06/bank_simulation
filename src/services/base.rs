@@ -1,5 +1,6 @@
 use super::services::Services;
 use crate::client::Client;
+use std::time::Instant;
 
 #[derive(Copy, Clone)]
 pub struct Service {
@@ -10,7 +11,6 @@ pub struct Service {
     pub offer: u32,
     pub sid: Services,
     usage: u32,
-    //    queue: &[u32],
 }
 
 impl Service {
@@ -30,24 +30,27 @@ impl Service {
             offer,
             sid,
             usage: 0,
-            // queue: &[0];
         }
     }
 
-    pub fn work(&mut self, _client: &Client) -> &Service {
+    pub fn work(&mut self, client: &mut Client, queue: &mut Vec<&mut Client>) -> &Service {
         self.usage += 1;
         let mut first_go = true;
 
+        client.start_time = Some(Instant::now());
+
         while self.usage == self.offer {
             if first_go {
-                // self.queue.append(client);
-                // self.queue.sort_by_key(|c| c.priority);
+                queue.append(client);
+                queue.sort_by_key(|c| c.priority);
                 first_go = false;
             }
         }
 
-        // before cuda init
-        // client.start_time = Some(Instant::now());
+        let mut client = queue[0];
+        client.elapsed_time = Some(client.start_time.unwrap().elapsed());
+        queue.remove(0);
+        self.usage -= 1;
 
         self
     }
